@@ -26,18 +26,32 @@ function dogApiCall(userInput){
 
 function display(responseJson){
     console.log(responseJson);
+    $('#chosen').empty();
     for(let i =0; i < responseJson.message.length; i++){
         console.log(responseJson.message[i]);
     };
     // $('.results').removeClass('hidden');
 }
 
+// function callOnSubmit() {
+//     $('form').submit(event => {
+//         event.preventDefault();
+//        userInput = $('#numberOfDogs').val();
+//         console.log(`user input = ${userInput}`);
+//         dogApiCall(userInput);
+//     });
+// }
+
 function callOnSubmit() {
     $('form').submit(event => {
         event.preventDefault();
        userInput = $('#numberOfDogs').val();
+       if (userInput > 50){
+           alert ('input a number between 1 and 50');
+       }else{
         console.log(`user input = ${userInput}`);
         dogApiCall(userInput);
+       }
     });
 }
 
